@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ilhéus Saúde +</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  :root {
+    --verde-escuro: #1a5c2a;
+    --verde-medio: #2d7a3a;
+    --verde-claro: #3d9e4f;
+    --vermelho: #c0392b;
+    --vermelho-claro: #e74c3c;
+    --amarelo: #e6a817;
+    --azul-escuro: #1a3a6b;
+    --azul-medio: #2563a8;
+    --branco: #ffffff;
+    --cinza-claro: #f5f5f5;
+    --cinza: #e0e0e0;
+    --texto-escuro: #1a1a1a;
+    --texto-medio: #444;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cinza-claro);
+    color: var(--texto-escuro);
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    background: var(--verde-escuro);
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 42px; height: 42px;
+    background: var(--branco);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .logo-text {
+    color: var(--branco);
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+  }
+  .logo-text span { color: #7ede91; }
+
+  nav { display: flex; gap: 6px; }
+  nav a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+  }
+  nav a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+  .btn-notif {
+    background: rgba(255,255,255,0.12);
+    border: none; border-radius: 8px;
+    color: #fff; cursor: pointer;
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .btn-notif:hover { background: rgba(255,255,255,0.22); }
+  .notif-badge {
+    position: absolute; top: 6px; right: 6px;
+    width: 9px; height: 9px;
+    background: var(--vermelho-claro); border-radius: 50%;
+    border: 2px solid var(--verde-escuro);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde-medio) 60%, var(--verde-claro) 100%);
+    padding: 56px 24px 64px;
+    text-align: center;
+    color: var(--branco);
+  }
+  .hero h1 {
+    font-size: 36px; font-weight: 800;
+    line-height: 1.15; margin-bottom: 12px;
+  }
+  .hero p {
+    font-size: 16px; opacity: 0.88;
+    max-width: 480px; margin: 0 auto 28px;
+    line-height: 1.6;
+  }
+  .hero-greeting {
+    background: rgba(255,255,255,0.14);
+    display: inline-block;
+    border-radius: 30px;
+    padding: 6px 18px;
+    font-size: 14px;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  /* ===== MAIN GRID ===== */
+  main {
+    max-width: 1100px;
+    margin: -32px auto 0;
+    padding: 0 20px 60px;
+  }
+
+  /* ===== SECTION TITLE ===== */
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--verde-escuro);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 32px 0 14px;
+  }
+
+  /* ===== CARDS GRID ===== */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .cards-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    border-radius: 16px;
+    padding: 28px 24px;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.18s, box-shadow 0.18s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 480px) {
+  .whatsapp-float {
+    width: 52px;
+    height: 52px;
+    bottom: 16px;
+    right: 16px;
+  }
+}
+
+  .card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.14); }
+
+  .card-verde { background: var(--verde-escuro); color: var(--branco); }
+  .card-vermelho { background: var(--vermelho); color: var(--branco); }
+  .card-azul { background: var(--azul-escuro); color: var(--branco); }
+  .card-amarelo { background: var(--amarelo); color: var(--branco); }
+  .card-branco { background: var(--branco); color: var(--texto-escuro); border: 1.5px solid var(--cinza); }
+  .card-verde-claro { background: #e8f5eb; color: var(--verde-escuro); border: 1.5px solid #b6deba; }
+
+  .card-icon { font-size: 32px; }
+  .card h3 { font-size: 18px; font-weight: 700; line-height: 1.2; }
+  .card p { font-size: 13px; opacity: 0.88; line-height: 1.5; }
+
+  /* ===== FEATURE HIGHLIGHT (2-column big) ===== */
+  .highlight-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 680px) {
+    .highlight-row { grid-template-columns: 1fr; }
+    nav { display: none; }
+    .hero h1 { font-size: 26px; }
+  }
+
+  /* ===== MODAL OVERLAY ===== */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.active { display: flex; }
+
+  .modal {
+    background: var(--branco);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: modalIn 0.25s ease;
+  }
+  @keyframes modalIn {
+    from { transform: scale(0.92) translateY(20px); opacity: 0; }
+    to   { transform: scale(1) translateY(0); opacity: 1; }
+  }
+
+  .modal-header {
+    padding: 22px 24px 16px;
+    border-bottom: 1.5px solid var(--cinza);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .modal-header h2 { font-size: 18px; font-weight: 700; }
+  .modal-close {
+    background: var(--cinza-claro); border: none;
+    border-radius: 8px; width: 36px; height: 36px;
+    cursor: pointer; font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;
+  }
+  .modal-close:hover { background: var(--cinza); }
+
+  .modal-body { padding: 24px; }
+
+  /* ===== PROGRESS STEPS ===== */
+  .steps {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 28px;
+  }
+  .step {
+    display: flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border-radius: 50%;
+    font-size: 13px; font-weight: 700;
+    background: var(--cinza); color: #999;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s;
+  }
+  .step.active { background: var(--verde-escuro); color: #fff; }
+  .step.done { background: var(--verde-claro); color: #fff; }
+  .step-line {
+    flex: 1; height: 3px;
+    background: var(--cinza);
+    transition: background 0.3s;
+  }
+  .step-line.done { background: var(--verde-claro); }
+
+  /* ===== FORM ELEMENTS ===== */
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block;
+    font-size: 13px; font-weight: 600;
+    color: var(--texto-medio);
+    margin-bottom: 6px;
+  }
+  .form-group select,
+  .form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--cinza);
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--branco);
+    color: var(--texto-escuro);
+    transition: border-color 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+  .form-group input[type="date"] {
+    background-image: none;
+  }
+  .form-group select:focus,
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--verde-escuro);
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity 0.18s, transform 0.12s;
+  }
+  .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+  .btn-verde { background: var(--verde-escuro); color: #fff; }
+  .btn-vermelho { background: var(--vermelho); color: #fff; }
+  .btn-azul { background: var(--azul-escuro); color: #fff; }
+
+  /* ===== SUCCESS STATE ===== */
+  .success-box {
+    text-align: center;
+    padding: 20px 0 8px;
+  }
+  .success-icon {
+    width: 72px; height: 72px;
+    background: #e8f5eb;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px;
+    margin: 0 auto 16px;
+  }
+  .success-box h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .success-box p { font-size: 14px; color: var(--texto-medio); line-height: 1.6; }
+  .success-detail {
+    background: var(--cinza-claro);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 16px 0;
+    font-size: 14px;
+    text-align: left;
+    line-height: 1.7;
+  }
+  .success-detail strong { color: var(--verde-escuro); }
+
+  /* ===== MEDICINE LIST ===== */
+  .med-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--cinza-claro);
+    border: 1.5px solid var(--cinza);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+  }
+  .med-search input {
+    border: none; background: none;
+    font-size: 14px; font-family: inherit;
+    flex: 1; outline: none;
+    color: var(--texto-escuro);
+  }
+  .med-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 4px;
+    border-bottom: 1.5px solid var(--cinza);
+    transition: background 0.1s;
+    border-radius: 8px;
+  }
+  .med-item:last-child { border-bottom: none; }
+  .med-icon { font-size: 24px; flex-shrink: 0; }
+  .med-info { flex: 1; }
+  .med-name { font-size: 14px; font-weight: 600; }
+  .med-type { font-size: 12px; color: #888; }
+  .med-badge {
+    background: #e8f5eb;
+    color: var(--verde-escuro);
+    font-size: 11px; font-weight: 700;
+    padding: 4px 10px; border-radius: 20px;
+  }
+
+  /* ===== INCLUSIVE OPTIONS ===== */
+  .inclusive-option {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    width: 100%;
+    text-align: left;
+    transition: opacity 0.15s, transform 0.12s;
+  }
+  .inclusive-option:hover { opacity: 0.9; transform: translateY(-2px); }
+  .inclusive-option .opt-icon { font-size: 22px; }
+  .inclusive-option .opt-sub { font-size: 11px; font-weight: 400; opacity: 0.88; }
+
+  /* ===== APPOINTMENTS LIST ===== */
+  .appt-item {
+    display: flex; gap: 14px;
+    padding: 14px;
+    background: var(--cinza-claro);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+  }
+  .appt-color-bar { width: 4px; border-radius: 4px; background: var(--verde-escuro); align-self: stretch; flex-shrink: 0; }
+  .appt-color-bar.red { background: var(--vermelho); }
+  .appt-title { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+  .appt-detail { font-size: 12px; color: #777; line-height: 1.6; }
+  .appt-badge {
+    margin-left: auto;
+    background: #e8f5eb; color: var(--verde-escuro);
+    font-size: 11px; font-weight: 700;
+    padding: 4px 10px; border-radius: 20px;
+    white-space: nowrap; align-self: flex-start;
+  }
+
+  /* ===== NOTIFICATIONS LIST ===== */
+  .notif-item {
+    display: flex; gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1.5px solid var(--cinza);
+    align-items: flex-start;
+  }
+  .notif-item:last-child { border-bottom: none; }
+  .notif-dot {
+    width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .notif-dot.verde { background: #e8f5eb; }
+  .notif-dot.vermelho { background: #fce8e6; }
+  .notif-dot.azul { background: #e6eef8; }
+  .notif-title { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+  .notif-sub { font-size: 12px; color: #888; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--verde-escuro);
+    color: rgba(255,255,255,0.75);
+    text-align: center;
+    padding: 28px 24px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  footer strong { color: #fff; }
+
+  /* ===== TRANSPORT ===== */
+  .transport-img {
+    background: var(--cinza-claro);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    font-size: 60px;
+    margin-bottom: 16px;
+  }
+  .transport-check {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 0;
+    font-size: 14px; color: var(--texto-medio);
+    border-bottom: 1px solid var(--cinza);
+  }
+  .transport-check:last-child { border-bottom: none; }
+  .transport-check span { font-size: 18px; color: var(--verde-escuro); }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#home">
+      <div class="logo-icon">🏥</div>
+      <div class="logo-text">Ilhéus <span>Saúde +</span></div>
+    </a>
+    <nav>
+      <a href="#home" onclick="scrollTo(0,0);return false;">Início</a>
+      <a href="#" onclick="openModal('agendamentos');return false;">Agendamentos</a>
+      <a href="#" onclick="openModal('medicamentos');return false;">Medicamentos</a>
+      <a href="#" onclick="openModal('perfil');return false;">Perfil</a>
+    </nav>
+    <button class="btn-notif" onclick="openModal('notificacoes')" title="Notificações">
+      🔔
+      <span class="notif-badge"></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<div class="hero" id="home">
+  <div class="hero-greeting">👋 Olá, seja bem-vindo(a)!</div>
+  <h1>Como podemos ajudar<br>você hoje?</h1>
+  <p>Agende consultas, exames, acesse medicamentos e serviços prioritários — tudo em um só lugar.</p>
+</div>
+
+<!-- ===== MAIN ===== -->
+<main>
+
+  <p class="section-title">Serviços Principais</p>
+  <div class="highlight-row">
+    <a class="card card-verde" onclick="openModal('agendar-consulta');return false;" href="#">
+      <div class="card-icon">📅</div>
+      <h3>Agendar Consulta</h3>
+      <p>Marque sua consulta com médicos e especialistas com facilidade.</p>
+    </a>
+    <a class="card card-vermelho" onclick="openModal('agendar-exame');return false;" href="#">
+      <div class="card-icon">🔬</div>
+      <h3>Agendar Exames</h3>
+      <p>Agende seus exames de forma rápida e com prioridade.</p>
+    </a>
+  </div>
+
+  <p class="section-title">Mais Serviços</p>
+  <div class="cards-grid">
+    <a class="card card-branco" onclick="openModal('profissionais');return false;" href="#">
+      <div class="card-icon">👨‍⚕️</div>
+      <h3>Buscar Profissionais</h3>
+      <p>Encontre médicos e especialistas disponíveis na sua unidade.</p>
+    </a>
+    <a class="card card-branco" onclick="openModal('agendamentos');return false;" href="#">
+      <div class="card-icon" style="color:var(--amarelo)">🗓️</div>
+      <h3>Meus Agendamentos</h3>
+      <p>Veja e gerencie suas consultas e exames marcados.</p>
+    </a>
+  </div>
+<!-- Botão flutuante do WhatsApp -->
+<a
+  href="https://wa.me/5568992267098?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20com%20os%20servi%C3%A7os%20do%20Ilh%C3%A9us%20Sa%C3%BAde%2B"
+  class="whatsapp-float"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Fale conosco pelo WhatsApp"
+>
+  <svg viewBox="0 0 32 32" width="32" height="32" fill="currentColor" aria-hidden="true">
+    <path d="M16.003 3C9.373 3 4 8.373 4 15.003c0 2.65.86 5.105 2.32 7.105L4 29l7.06-2.28a11.94 11.94 0 0 0 4.943 1.06h.003C22.63 27.78 28 22.41 28 15.78 28 9.15 22.633 3 16.003 3zm0 21.78h-.003a9.93 9.93 0 0 1-4.55-1.108l-.326-.193-4.19 1.353 1.376-4.082-.213-.337a9.94 9.94 0 0 1-1.523-5.31C6.57 9.96 10.79 5.74 16.003 5.74c2.66 0 5.16 1.037 7.04 2.917a9.86 9.86 0 0 1 2.916 7.04c-.003 5.213-4.223 9.43-9.956 9.43zm5.452-7.45c-.298-.15-1.764-.87-2.038-.97-.273-.1-.472-.15-.67.15-.198.298-.768.97-.94 1.168-.174.198-.347.223-.644.075-.298-.15-1.26-.464-2.4-1.48-.886-.79-1.484-1.766-1.658-2.064-.173-.298-.018-.46.13-.607.134-.133.298-.347.447-.52.15-.174.198-.298.298-.497.1-.198.05-.372-.025-.52-.074-.15-.67-1.614-.918-2.21-.242-.58-.487-.5-.67-.51l-.57-.01c-.198 0-.52.075-.793.372s-1.04 1.016-1.04 2.48 1.066 2.876 1.214 3.074c.15.198 2.098 3.203 5.08 4.492.71.306 1.264.49 1.696.626.713.227 1.362.195 1.875.118.572-.085 1.764-.72 2.013-1.416.248-.695.248-1.29.174-1.415-.074-.124-.272-.198-.57-.347z"/>
+  </svg>
+</a>
+
+  <p class="section-title">Acesso & Inclusão</p>
+  <div class="cards-grid">
+    <a class="card card-azul" onclick="openModal('medicamentos');return false;" href="#">
+      <div class="card-icon">💊</div>
+      <h3>Medicamentos Disponíveis</h3>
+      <p>Consulte a lista de medicamentos disponíveis na unidade de saúde.</p>
+    </a>
+    <a class="card card-amarelo" onclick="openModal('acesso-inclusivo');return false;" href="#">
+      <div class="card-icon">♿</div>
+      <h3>Acesso Inclusivo</h3>
+      <p>Atendimento prioritário para quem mais precisa. Com inclusão e respeito.</p>
+    </a>
+    <a class="card card-verde-claro" onclick="openModal('transporte');return false;" href="#">
+      <div class="card-icon">🚐</div>
+      <h3>Transporte Acessível</h3>
+      <p>Solicite transporte adaptado para sua consulta ou exame.</p>
+    </a>
+  </div>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <strong>Ilhéus Saúde +</strong><br>
+  Secretaria Municipal de Saúde de Ilhéus — BA<br>
+  Central de Atendimento: (73) 3234-0000
+</footer>
+
+
+<!-- ====================================================== -->
+<!-- MODALS -->
+<!-- ====================================================== -->
+
+<!-- AGENDAR CONSULTA -->
+<div class="modal-overlay" id="modal-agendar-consulta" onclick="closeOnOverlay(event,'agendar-consulta')">
+  <div class="modal">
+    <div class="modal-header" style="border-color:var(--verde-escuro);">
+      <h2>📅 Agendar Consulta</h2>
+      <button class="modal-close" onclick="closeModal('agendar-consulta')">✕</button>
+    </div>
+    <div class="modal-body" id="body-consulta">
+      <!-- step 1 -->
+      <div class="steps">
+        <div class="step active" id="cs1">1</div>
+        <div class="step-line" id="cl1"></div>
+        <div class="step" id="cs2">2</div>
+        <div class="step-line" id="cl2"></div>
+        <div class="step" id="cs3">3</div>
+        <div class="step-line" id="cl3"></div>
+        <div class="step" id="cs4">4</div>
+      </div>
+      <div class="form-group">
+        <label>Especialidade</label>
+        <select id="c-especialidade">
+          <option>Clínico Geral</option>
+          <option>Cardiologia</option>
+          <option>Ginecologia</option>
+          <option>Pediatria</option>
+          <option>Ortopedia</option>
+          <option>Neurologia</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Profissional</label>
+        <select id="c-profissional">
+          <option>Dra. Juliana Andrade</option>
+          <option>Dr. Carlos Mendes</option>
+          <option>Dra. Patrícia Lima</option>
+          <option>Dr. Roberto Costa</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Data</label>
+        <input type="date" id="c-data" value="2026-06-30">
+      </div>
+      <div class="form-group">
+        <label>Horário</label>
+        <select id="c-horario">
+          <option>07:00</option>
+          <option selected>09:00</option>
+          <option>10:30</option>
+          <option>13:00</option>
+          <option>14:30</option>
+          <option>16:00</option>
+        </select>
+      </div>
+      <button class="btn btn-verde" onclick="confirmarConsulta()">Continuar</button>
+    </div>
+  </div>
+</div>
+
+<!-- AGENDAR EXAME -->
+<div class="modal-overlay" id="modal-agendar-exame" onclick="closeOnOverlay(event,'agendar-exame')">
+  <div class="modal">
+    <div class="modal-header" style="border-color:var(--vermelho);">
+      <h2>🔬 Agendar Exame</h2>
+      <button class="modal-close" onclick="closeModal('agendar-exame')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="steps">
+        <div class="step active">1</div>
+        <div class="step-line"></div>
+        <div class="step">2</div>
+        <div class="step-line"></div>
+        <div class="step">3</div>
+        <div class="step-line"></div>
+        <div class="step">4</div>
+        <div class="step-line"></div>
+        <div class="step">5</div>
+      </div>
+      <div class="form-group">
+        <label>Tipo de Exame</label>
+        <select id="e-tipo">
+          <option>Hemograma Completo</option>
+          <option>Glicemia em Jejum</option>
+          <option>Raio-X Tórax</option>
+          <option>Ultrassom Abdominal</option>
+          <option>Eletrocardiograma</option>
+          <option>Colesterol Total</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Unidade de Atendimento</label>
+        <select id="e-unidade">
+          <option>Policlínica Regional</option>
+          <option>UBS Centro</option>
+          <option>UBS Pontal</option>
+          <option>Laboratório Municipal</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Data</label>
+        <input type="date" id="e-data" value="2026-06-30">
+      </div>
+      <div class="form-group">
+        <label>Horário</label>
+        <select id="e-horario">
+          <option selected>07:30</option>
+          <option>08:00</option>
+          <option>09:30</option>
+          <option>11:00</option>
+        </select>
+      </div>
+      <button class="btn btn-vermelho" onclick="confirmarExame()">Continuar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MEDICAMENTOS -->
+<div class="modal-overlay" id="modal-medicamentos" onclick="closeOnOverlay(event,'medicamentos')">
+  <div class="modal">
+    <div class="modal-header" style="border-color:var(--azul-escuro);">
+      <h2>💊 Medicamentos Disponíveis</h2>
+      <button class="modal-close" onclick="closeModal('medicamentos')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="med-search">
+        <span>🔍</span>
+        <input type="text" placeholder="Buscar medicamento..." oninput="filtrarMeds(this.value)" id="med-input">
+      </div>
+      <div id="med-list">
+        <div class="med-item"><div class="med-icon">💊</div><div class="med-info"><div class="med-name">Losartana 50mg</div><div class="med-type">Comprimido</div></div><div class="med-badge">Disponível</div></div>
+        <div class="med-item"><div class="med-icon">💊</div><div class="med-info"><div class="med-name">Dipirona 500mg</div><div class="med-type">Comprimido</div></div><div class="med-badge">Disponível</div></div>
+        <div class="med-item"><div class="med-icon">🔶</div><div class="med-info"><div class="med-name">Metformina 850mg</div><div class="med-type">Comprimido</div></div><div class="med-badge">Disponível</div></div>
+        <div class="med-item"><div class="med-icon">💙</div><div class="med-info"><div class="med-name">Salbutamol 100mcg</div><div class="med-type">Spray</div></div><div class="med-badge">Disponível</div></div>
+        <div class="med-item"><div class="med-icon">💊</div><div class="med-info"><div class="med-name">Enalapril 10mg</div><div class="med-type">Comprimido</div></div><div class="med-badge">Disponível</div></div>
+        <div class="med-item"><div class="med-icon">💊</div><div class="med-info"><div class="med-name">Sinvastatina 20mg</div><div class="med-type">Comprimido</div></div><div class="med-badge">Disponível</div></div>
+        <div class="med-item"><div class="med-icon">💊</div><div class="med-info"><div class="med-name">Omeprazol 20mg</div><div class="med-type">Cápsula</div></div><div class="med-badge">Disponível</div></div>
+        <div class="med-item"><div class="med-icon">🔵</div><div class="med-info"><div class="med-name">Amoxicilina 500mg</div><div class="med-type">Cápsula</div></div><div class="med-badge">Disponível</div></div>
+      </div>
+      <br>
+      <button class="btn btn-azul" onclick="alert('Unidades disponíveis:\n\n📍 UBS Centro — Rua das Flores, 120\n📍 Policlínica Regional — Av. Soares Lopes, 89\n📍 UBS Pontal — Rua da Praia, 45\n\nHorário: Seg–Sex, 07:00–17:00')">Ver unidades disponíveis</button>
+    </div>
+  </div>
+</div>
+
+<!-- ACESSO INCLUSIVO -->
+<div class="modal-overlay" id="modal-acesso-inclusivo" onclick="closeOnOverlay(event,'acesso-inclusivo')">
+  <div class="modal">
+    <div class="modal-header" style="border-color:var(--amarelo);">
+      <h2>♿ Acesso Inclusivo</h2>
+      <button class="modal-close" onclick="closeModal('acesso-inclusivo')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="steps">
+        <div class="step active">1</div>
+        <div class="step-line"></div>
+        <div class="step">2</div>
+        <div class="step-line"></div>
+        <div class="step">3</div>
+      </div>
+      <p style="font-size:14px;color:var(--texto-medio);margin-bottom:16px;font-weight:500;">Selecione a opção que melhor se aplica a você:</p>
+      <button class="inclusive-option" style="background:var(--verde-escuro);" onclick="ativarPrioridade('Idosos')">
+        <span class="opt-icon">👴</span>
+        <div>
+          <div>Idosos</div>
+          <div class="opt-sub">Atendimento prioritário</div>
+        </div>
+      </button>
+      <button class="inclusive-option" style="background:var(--vermelho);" onclick="ativarPrioridade('Pessoas com Deficiência')">
+        <span class="opt-icon">♿</span>
+        <div>
+          <div>Pessoas com Deficiência</div>
+          <div class="opt-sub">Atendimento prioritário</div>
+        </div>
+      </button>
+      <button class="inclusive-option" style="background:var(--amarelo);" onclick="ativarPrioridade('Dificuldade de Locomoção')">
+        <span class="opt-icon">🦽</span>
+        <div>
+          <div>Dificuldade de Locomoção</div>
+          <div class="opt-sub">Atendimento prioritário</div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- TRANSPORTE -->
+<div class="modal-overlay" id="modal-transporte" onclick="closeOnOverlay(event,'transporte')">
+  <div class="modal">
+    <div class="modal-header" style="border-color:var(--vermelho);">
+      <h2>🚐 Transporte Acessível</h2>
+      <button class="modal-close" onclick="closeModal('transporte')">✕</button>
+    </div>
+    <div class="modal-body" id="body-transporte">
+      <div class="steps">
+        <div class="step active">1</div>
+        <div class="step-line"></div>
+        <div class="step">2</div>
+        <div class="step-line"></div>
+        <div class="step">3</div>
+      </div>
+      <div class="transport-img">🚐</div>
+      <p style="text-align:center;font-size:15px;font-weight:600;margin-bottom:16px;">Precisa de transporte para sua consulta ou exame?</p>
+      <div class="transport-check"><span>✅</span> Veículos adaptados</div>
+      <div class="transport-check"><span>✅</span> Motoristas treinados</div>
+      <div class="transport-check"><span>✅</span> Acompanhamento, se necessário</div>
+      <br>
+      <div class="form-group">
+        <label>Endereço de origem</label>
+        <input type="text" placeholder="Rua, número, bairro">
+      </div>
+      <div class="form-group">
+        <label>Data do transporte</label>
+        <input type="date" value="2026-06-30">
+      </div>
+      <button class="btn btn-vermelho" onclick="solicitarTransporte()">Solicitar Transporte</button>
+    </div>
+  </div>
+</div>
+
+<!-- AGENDAMENTOS -->
+<div class="modal-overlay" id="modal-agendamentos" onclick="closeOnOverlay(event,'agendamentos')">
+  <div class="modal">
+    <div class="modal-header" style="border-color:var(--amarelo);">
+      <h2>🗓️ Meus Agendamentos</h2>
+      <button class="modal-close" onclick="closeModal('agendamentos')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="appt-item">
+        <div class="appt-color-bar"></div>
+        <div>
+          <div class="appt-title">Consulta — Clínico Geral</div>
+          <div class="appt-detail">Dra. Juliana Andrade<br>23/05/2026 • 09:00 • UBS Centro</div>
+        </div>
+        <div class="appt-badge">Confirmado</div>
+      </div>
+      <div class="appt-item">
+        <div class="appt-color-bar red"></div>
+        <div>
+          <div class="appt-title">Exame — Hemograma Completo</div>
+          <div class="appt-detail">Policlínica Regional<br>30/06/2026 • 07:30</div>
+        </div>
+        <div class="appt-badge">Confirmado</div>
+      </div>
+      <br>
+      <button class="btn btn-verde" onclick="openModal('agendar-consulta');closeModal('agendamentos')">+ Novo Agendamento</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROFISSIONAIS -->
+<div class="modal-overlay" id="modal-profissionais" onclick="closeOnOverlay(event,'profissionais')">
+  <div class="modal">
+    <div class="modal-header" style="border-color:var(--verde-escuro);">
+      <h2>👨‍⚕️ Buscar Profissionais</h2>
+      <button class="modal-close" onclick="closeModal('profissionais')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="med-search">
+        <span>🔍</span>
+        <input type="text" placeholder="Buscar médico ou especialidade...">
+      </div>
+      <div class="appt-item">
+        <div class="appt-color-bar"></div>
+        <div>
+          <div class="appt-title">Dra. Juliana Andrade</div>
+          <div class="appt-detail">Clínica Geral • CRM 12345-BA<br>UBS Centro — Disponível Seg–Sex</div>
+        </div>
+      </div>
+      <div class="appt-item">
+        <div class="appt-color-bar"></div>
+        <div>
+          <div class="appt-title">Dr. Carlos Mendes</div>
+          <div class="appt-detail">Cardiologia • CRM 23456-BA<br>Policlínica Regional — Seg, Qua, Sex</div>
+        </div>
+      </div>
+      <div class="appt-item">
+        <div class="appt-color-bar"></div>
+        <div>
+          <div class="appt-title">Dra. Patrícia Lima</div>
+          <div class="appt-detail">Ginecologia • CRM 34567-BA<br>UBS Pontal — Ter, Qui</div>
+        </div>
+      </div>
+      <div class="appt-item">
+        <div class="appt-color-bar"></div>
+        <div>
+          <div class="appt-title">Dr. Roberto Costa</div>
+          <div class="appt-detail">Pediatria • CRM 45678-BA<br>UBS Centro — Seg–Sex</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NOTIFICAÇÕES -->
+<div class="modal-overlay" id="modal-notificacoes" onclick="closeOnOverlay(event,'notificacoes')">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>🔔 Notificações</h2>
+      <button class="modal-close" onclick="closeModal('notificacoes')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="notif-item">
+        <div class="notif-dot verde">📅</div>
+        <div>
+          <div class="notif-title">Lembrete de Consulta</div>
+          <div class="notif-sub">23/05/2026 • 09:00 — Clínico Geral</div>
+        </div>
+      </div>
+      <div class="notif-item">
+        <div class="notif-dot vermelho">🔬</div>
+        <div>
+          <div class="notif-title">Resultado de Exame</div>
+          <div class="notif-sub">Hemograma Completo disponível</div>
+        </div>
+      </div>
+      <div class="notif-item">
+        <div class="notif-dot azul">💬</div>
+        <div>
+          <div class="notif-title">Nova Mensagem</div>
+          <div class="notif-sub">Sua unidade enviou uma mensagem.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PERFIL -->
+<div class="modal-overlay" id="modal-perfil" onclick="closeOnOverlay(event,'perfil')">
+  <div class="modal">
+    <div class="modal-header" style="border-color:var(--verde-escuro);">
+      <h2>👤 Meu Perfil</h2>
+      <button class="modal-close" onclick="closeModal('perfil')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="text-align:center;margin-bottom:20px;">
+        <div style="width:72px;height:72px;background:var(--verde-escuro);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 10px;">👤</div>
+        <div style="font-size:16px;font-weight:700;">Maria da Silva</div>
+        <div style="font-size:13px;color:#888;">Usuária desde 2024</div>
+      </div>
+      <div class="form-group">
+        <label>Nome completo</label>
+        <input type="text" value="Maria da Silva">
+      </div>
+      <div class="form-group">
+        <label>Telefone</label>
+        <input type="text" value="(73) 99999-9999">
+      </div>
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="text" value="maria@email.com">
+      </div>
+      <button class="btn btn-verde" onclick="alert('Perfil atualizado com sucesso! ✅');closeModal('perfil')">Salvar alterações</button>
+      <br><br>
+      <button class="btn" style="background:var(--cinza);color:var(--vermelho);font-weight:700;" onclick="alert('Você saiu da conta.')">Sair</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL CONSULTA -->
+<div class="modal-overlay" id="modal-sucesso-consulta" onclick="closeOnOverlay(event,'sucesso-consulta')">
+  <div class="modal">
+    <div class="modal-header" style="border-color:var(--verde-claro);">
+      <h2>Consulta Agendada</h2>
+      <button class="modal-close" onclick="closeModal('sucesso-consulta')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="success-box">
+        <div class="success-icon">✅</div>
+        <h3>Agendamento Confirmado!</h3>
+        <p>Sua consulta foi agendada com sucesso. Você receberá um lembrete.</p>
+        <div class="success-detail" id="detalhe-consulta"></div>
+        <button class="btn btn-verde" onclick="closeModal('sucesso-consulta')">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL EXAME -->
+<div class="modal-overlay" id="modal-sucesso-exame" onclick="closeOnOverlay(event,'sucesso-exame')">
+  <div class="modal">
+    <div class="modal-header" style="border-color:var(--vermelho);">
+      <h2>Exame Agendado</h2>
+      <button class="modal-close" onclick="closeModal('sucesso-exame')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="success-box">
+        <div class="success-icon">✅</div>
+        <h3>Exame Confirmado!</h3>
+        <p>Seu exame foi agendado. Lembre-se das instruções de preparo.</p>
+        <div class="success-detail" id="detalhe-exame"></div>
+        <button class="btn btn-vermelho" onclick="closeModal('sucesso-exame')">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL PRIORIDADE -->
+<div class="modal-overlay" id="modal-sucesso-prioridade" onclick="closeOnOverlay(event,'sucesso-prioridade')">
+  <div class="modal">
+    <div class="modal-header" style="border-color:var(--amarelo);">
+      <h2>Acesso Prioritário</h2>
+      <button class="modal-close" onclick="closeModal('sucesso-prioridade')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="success-box">
+        <div class="success-icon">♿</div>
+        <h3>Prioridade Ativada!</h3>
+        <p id="msg-prioridade">Você terá atendimento prioritário no agendamento, atendimento e suporte.</p>
+        <div class="success-detail">
+          ✅ Fila prioritária ativada<br>
+          ✅ Suporte ao atendimento<br>
+          ✅ Acompanhamento disponível
+        </div>
+        <button class="btn btn-verde" onclick="closeModal('sucesso-prioridade')">Continuar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL TRANSPORTE -->
+<div class="modal-overlay" id="modal-sucesso-transporte" onclick="closeOnOverlay(event,'sucesso-transporte')">
+  <div class="modal">
+    <div class="modal-header" style="border-color:var(--vermelho);">
+      <h2>Transporte Solicitado</h2>
+      <button class="modal-close" onclick="closeModal('sucesso-transporte')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="success-box">
+        <div class="success-icon">🚐</div>
+        <h3>Solicitação Enviada!</h3>
+        <p>Sua solicitação de transporte acessível foi registrada com sucesso.</p>
+        <div class="success-detail">
+          ✅ Veículo adaptado reservado<br>
+          ✅ Motorista treinado designado<br>
+          ✅ Você será contatado em breve
+        </div>
+        <button class="btn btn-vermelho" onclick="closeModal('sucesso-transporte')">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function closeOnOverlay(e, id) {
+    if (e.target === e.currentTarget) closeModal(id);
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.active').forEach(m => {
+        m.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
+  });
+
+  function confirmarConsulta() {
+    const esp = document.getElementById('c-especialidade').value;
+    const prof = document.getElementById('c-profissional').value;
+    const data = document.getElementById('c-data').value;
+    const hora = document.getElementById('c-horario').value;
+    const dataFmt = data ? new Date(data + 'T12:00').toLocaleDateString('pt-BR') : '—';
+    document.getElementById('detalhe-consulta').innerHTML =
+      `<strong>Especialidade:</strong> ${esp}<br>` +
+      `<strong>Profissional:</strong> ${prof}<br>` +
+      `<strong>Data:</strong> ${dataFmt}<br>` +
+      `<strong>Horário:</strong> ${hora}`;
+    closeModal('agendar-consulta');
+    openModal('sucesso-consulta');
+  }
+
+  function confirmarExame() {
+    const tipo = document.getElementById('e-tipo').value;
+    const unid = document.getElementById('e-unidade').value;
+    const data = document.getElementById('e-data').value;
+    const hora = document.getElementById('e-horario').value;
+    const dataFmt = data ? new Date(data + 'T12:00').toLocaleDateString('pt-BR') : '—';
+    document.getElementById('detalhe-exame').innerHTML =
+      `<strong>Exame:</strong> ${tipo}<br>` +
+      `<strong>Unidade:</strong> ${unid}<br>` +
+      `<strong>Data:</strong> ${dataFmt}<br>` +
+      `<strong>Horário:</strong> ${hora}`;
+    closeModal('agendar-exame');
+    openModal('sucesso-exame');
+  }
+
+  function ativarPrioridade(tipo) {
+    document.getElementById('msg-prioridade').textContent =
+      `Atendimento prioritário ativado para: ${tipo}. Você será atendido com prioridade no agendamento, atendimento e suporte.`;
+    closeModal('acesso-inclusivo');
+    openModal('sucesso-prioridade');
+  }
+
+  function solicitarTransporte() {
+    closeModal('transporte');
+    openModal('sucesso-transporte');
+  }
+
+  function filtrarMeds(val) {
+    const items = document.querySelectorAll('#med-list .med-item');
+    items.forEach(item => {
+      const name = item.querySelector('.med-name').textContent.toLowerCase();
+      item.style.display = name.includes(val.toLowerCase()) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>

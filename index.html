@@ -51,23 +51,8 @@
   .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
     text-decoration: none;
   }
-  .logo-icon {
-    width: 42px; height: 42px;
-    background: var(--branco);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-  }
-  .logo-text {
-    color: var(--branco);
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: -0.3px;
-  }
-  .logo-text span { color: #7ede91; }
 
   nav { display: flex; gap: 6px; }
   nav a {
@@ -500,8 +485,25 @@
 <header>
   <div class="header-inner">
     <a class="logo" href="#home">
-      <div class="logo-icon">🏥</div>
-      <div class="logo-text">Ilhéus <span>Saúde +</span></div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="180" height="68" aria-label="Ilhéus Saúde+">
+        <!-- Coração vermelho -->
+        <path d="M72,50 C72,32 53,22 43,35 C33,22 14,32 14,50 C14,68 43,92 43,92 C43,92 72,68 72,50Z" fill="#c0392b"/>
+        <!-- Cruz branca -->
+        <rect x="38" y="38" width="10" height="28" rx="2" fill="white"/>
+        <rect x="29" y="47" width="28" height="10" rx="2" fill="white"/>
+        <!-- Cabeça verde -->
+        <circle cx="43" cy="68" r="6" fill="#2d8c3e"/>
+        <!-- Braços abertos -->
+        <path d="M20,82 Q43,74 66,82" stroke="#2d8c3e" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <!-- Folha verde -->
+        <path d="M30,93 Q43,112 56,93 Q49,89 43,91 Q37,89 30,93Z" fill="#2d8c3e"/>
+        <!-- ILHÉUS -->
+        <text x="88" y="65" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="30" fill="#c0392b" letter-spacing="1">ILHÉUS</text>
+        <!-- saúde -->
+        <text x="88" y="97" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="26" fill="#ffffff" letter-spacing="0.5">saúde</text>
+        <!-- + -->
+        <text x="197" y="97" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="32" fill="#ffffff">+</text>
+      </svg>
     </a>
     <nav>
       <a href="#home" onclick="scrollTo(0,0);return false;">Início</a>
